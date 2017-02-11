@@ -39,3 +39,6 @@ export const getUpcomingBirthdayWishMessages =
     createSelector(getPendingMessagesState, fromPendingMessages.getUpcomingBirthdayWishMessages);
 export const getUpcomingCongratulationsOnBabyMessages =
     createSelector(getPendingMessagesState, fromPendingMessages.getUpcomingCongratulationsOnBabyMessages);
+
+export const getUsersSelectedBirthdayWishMessage =
+    createSelector(getPendingMessagesState, fromPendingMessages.getUsersSelectedBirthdayWishMessage);

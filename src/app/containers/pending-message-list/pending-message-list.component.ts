@@ -9,8 +9,7 @@ import 'rxjs/add/operator/mergeMap';
 @Component({
   selector: 'mp-pending-message-list',
   templateUrl: './pending-message-list.component.html',
-  styleUrls: ['./pending-message-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./pending-message-list.component.scss']
 })
 export class PendingMessageListComponent {
   usersPendingBirthdayWishMessages$: Observable<PendingMessage[]>;
@@ -20,10 +19,8 @@ export class PendingMessageListComponent {
   constructor(private store: Store<fromRoot.State>) {
     this.usersPendingBirthdayWishMessages$ = this.store.select(fromRoot.getUsersPendingBirthdayWishMessages);
     this.usersPendingCongratulationsOnBabyMessages$ = this.store.select(fromRoot.getUsersPendingCongratulationsOnBabyMessages);
-    this.usersPendingBirthdayWishMessages$
-      .mergeMap((messages: PendingMessage[]) => messages)
-      .find((message: PendingMessage) => message.isSelected)
-      .subscribe((message: PendingMessage) => this.selectedBirthdayWishMessage = message);
+    this.store.select(fromRoot.getUsersSelectedBirthdayWishMessage)
+              .subscribe((message: PendingMessage) => this.selectedBirthdayWishMessage = message);
   }
 
   onBirthdayWishMessageSelected(message: PendingMessage) {

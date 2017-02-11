@@ -1,5 +1,7 @@
 import * as PendingMessagesActions from '../actions/pending-messages';
 import { PendingMessage } from '../models/pending-message.class';
+import { createSelector } from 'reselect';
+
 
 export interface State {
   usersPending: {
@@ -55,3 +57,7 @@ export const getUsersPendingCongratulationsOnBabyMessages = (state: State) => st
 
 export const getUpcomingBirthdayWishMessages = (state: State) => state.upcoming.birthdayWish;
 export const getUpcomingCongratulationsOnBabyMessages = (state: State) => state.upcoming.congratulationsOnBaby;
+
+export const getUsersSelectedBirthdayWishMessage =
+  createSelector(getUsersPendingBirthdayWishMessages,
+    (messages: PendingMessage[]) => messages.find((message: PendingMessage) => message.isSelected));
