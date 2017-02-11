@@ -1,11 +1,13 @@
 
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/core/theming/prebuilt/purple-green.css';
- 
+/* You can add global styles to this file, and also import other style files*/ 
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.scss';
 body {
   font-family: Roboto, sans-serif;
 }
-md-divider {
+
+.mp-subtitle {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
     display: block;
-    border-top-style: solid;
+    margin-bottom: 16px;
 }

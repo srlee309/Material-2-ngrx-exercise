@@ -7,6 +7,7 @@ import { UserLoginService } from '../services/user-login.service';
 import {UserResponse} from '../models/user-response.interface';
 import * as userLogin from '../actions/user-login';
 import * as names from '../actions/names';
+import * as gifts from '../actions/gifts';
 import * as pendingMessages from '../actions/pending-messages';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -21,7 +22,11 @@ export class UserLoginEffects {
       .ofType(userLogin.ActionTypes.LOGIN)
       .switchMap(() => {
         return this.userLoginService.login()
-          .mergeMap((loggedInUser: UserResponse) => from([new names.LoadAction(), new pendingMessages.LoadForUserAction()]));
+          .mergeMap((loggedInUser: UserResponse) => from([
+              new gifts.LoadAction(),
+              new names.LoadAction(),
+              new pendingMessages.LoadForUserAction()
+          ]));
           // in a real app a catch block would be here for error handling
          // .catch(error => of(new error.UserLoginErrorAction(error)));
       });

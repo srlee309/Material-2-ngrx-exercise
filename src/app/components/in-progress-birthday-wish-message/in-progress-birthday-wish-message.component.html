@@ -1,0 +1,21 @@
+<p class="mp-subtitle">Please select the gift for Steve</p>
+<form>
+  <md-select [(ngModel)]="selectedGift" name="gift">
+    <md-option *ngFor="let gift of gifts" [value]="gift">
+      {{gift.title}}
+    </md-option>
+  </md-select>
+  <div *ngIf="selectedGift">
+    <p class="mp-subtitle">Gift preview</p>
+    <p>{{selectedGift.title}}</p>
+    <p>{{selectedGift.description}}</p>
+    <img md-card-image src="{{selectedGift.location}}">
+
+
+
+    <p class="mp-subtitle">Message preview</p>
+    <p>'Mate, Happy Birthday. To celebrate this once a year occasion we have picked the following gift: {{selectedGift.title}}
+      Enjoy.'</p>
+  </div>
+
+</form>

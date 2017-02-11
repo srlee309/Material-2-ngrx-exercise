@@ -1,11 +1,20 @@
-<h4>Birthday Wish Messages</h4>
-<mp-pending-messages (messageSelected)="onBirthdayWishMessageSelected($event)"
-  [messages]="usersPendingBirthdayWishMessages$ | async" [selectable]="true">
-</mp-pending-messages>
-<h4>Congratulations On Baby Messages</h4>
-<div *ngIf="this.selectedBirthdayWishMessage">
-  <md-card>
-    <md-card-content>test</md-card-content>
-  </md-card>
-  <md-divider></md-divider>
-</div>
+<md-card>
+  <md-card-header>
+    <md-card-title>Birthday Wish</md-card-title>
+    <md-card-subtitle>Pending</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <mp-pending-messages (messageSelected)="onBirthdayWishMessageSelected($event)"
+      [messages]="usersPendingBirthdayWishMessages$ | async" [selectable]="true">
+    </mp-pending-messages>
+    <mp-in-progress-birthday-wish-message *ngIf="selectedBirthdayWishMessage" [gifts]="gifts$ | async">
+    </mp-in-progress-birthday-wish-message>
+    <md-card-actions *ngIf="selectedBirthdayWishMessage">
+      <div class="flex-container" fxLayout="row" fxLayoutAlign="center center">
+        <div class="flex-item">  
+         <button md-button>Send</button>
+        </div>
+      </div>
+    </md-card-actions>
+  </md-card-content>
+</md-card>

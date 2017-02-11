@@ -5,13 +5,16 @@ import { combineReducers } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import * as fromNames from './names';
 import * as fromPendingMessages from './pending-messages';
+import * as fromGifts from './gifts';
 import { createSelector } from 'reselect';
 export interface State {
+    gifts: fromGifts.State;
     names: fromNames.State;
     pendingMessages: fromPendingMessages.State;
 }
 
 const reducers = {
+    gifts: fromGifts.reducer,
     names: fromNames.reducer,
     pendingMessages: fromPendingMessages.reducer
 };
@@ -26,6 +29,9 @@ export function reducer(state: any, action: any) {
       return developmentReducer(state, action);
     }
 }
+
+export const getGiftsState = (state: State) => state.gifts;
+export const getGifts = createSelector(getGiftsState, fromGifts.getGifts);
 
 export const getNamesState = (state: State) => state.names;
 export const getNames = createSelector(getNamesState, fromNames.getNames);
