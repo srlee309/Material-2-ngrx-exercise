@@ -1,0 +1,11 @@
+<h4>Birthday Wish Messages</h4>
+<mp-pending-messages (messageSelected)="onBirthdayWishMessageSelected($event)"
+  [messages]="usersPendingBirthdayWishMessages$ | async" [selectable]="true">
+</mp-pending-messages>
+<h4>Congratulations On Baby Messages</h4>
+<div *ngIf="this.selectedBirthdayWishMessage">
+  <md-card>
+    <md-card-content>test</md-card-content>
+  </md-card>
+  <md-divider></md-divider>
+</div>
