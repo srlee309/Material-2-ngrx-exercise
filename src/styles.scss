@@ -11,3 +11,14 @@ body {
     display: block;
     margin-bottom: 16px;
 }
+.mp-disabled {
+     opacity: 0.4;
+     cursor: not-allowed;
+}
+md-chip:focus {
+  outline:0;
+}
+
+md-chip {
+  cursor:pointer;
+}

@@ -24,6 +24,7 @@ import { PendingMessageListComponent } from './containers/pending-message-list/p
 import { PendingMessagesComponent } from './components/pending-messages/pending-messages.component';
 import { InProgressBirthdayWishMessageComponent } from './components/in-progress-birthday-wish-message/in-progress-birthday-wish-message.component';
 import { InProgressCongratulationsOnBabyMessageComponent } from './components/in-progress-congratulations-on-baby-message/in-progress-congratulations-on-baby-message.component';
+import { UpcomingMessageListComponent } from './containers/upcoming-message-list/upcoming-message-list.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -44,7 +45,8 @@ import { InProgressCongratulationsOnBabyMessageComponent } from './components/in
     PendingMessageListComponent,
     PendingMessagesComponent,
     InProgressBirthdayWishMessageComponent,
-    InProgressCongratulationsOnBabyMessageComponent
+    InProgressCongratulationsOnBabyMessageComponent,
+    UpcomingMessageListComponent
   ],
   providers: [GiftsService, NamesService, PendingMessagesService, UserLoginService],
   bootstrap: [

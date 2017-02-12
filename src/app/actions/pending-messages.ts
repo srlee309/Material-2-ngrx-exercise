@@ -58,6 +58,6 @@ export class DeleteUsersPendingMessageAction implements Action {
  * so that reducers can easily compose action types
  */
 export type Actions
-  = LoadForUserAction | LoadForUserCompleteAction | LoadUpcomingAction 
-  | LoadUpcomingCompleteAction | SelectUsersPendingBirthdayWishMessageAction 
+  = LoadForUserAction | LoadForUserCompleteAction | LoadUpcomingAction
+  | LoadUpcomingCompleteAction | SelectUsersPendingBirthdayWishMessageAction
   | SelectUsersPendingCongratulationsOnBabyMessageAction | DeleteUsersPendingMessageAction;

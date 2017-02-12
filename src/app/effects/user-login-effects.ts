@@ -25,7 +25,8 @@ export class UserLoginEffects {
           .mergeMap((loggedInUser: UserResponse) => from([
               new gifts.LoadAction(),
               new names.LoadAction(),
-              new pendingMessages.LoadForUserAction()
+              new pendingMessages.LoadForUserAction(),
+              new pendingMessages.LoadUpcomingAction()
           ]));
           // in a real app a catch block would be here for error handling
          // .catch(error => of(new error.UserLoginErrorAction(error)));

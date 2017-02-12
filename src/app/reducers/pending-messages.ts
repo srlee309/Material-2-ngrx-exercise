@@ -37,6 +37,13 @@ export function reducer(state = initialState, action: PendingMessagesActions.Act
           congratulationsOnBaby: getPendingMessages(action.payload.congratulationsOnBaby)
         }
       });
+  case PendingMessagesActions.ActionTypes.LOAD_UPCOMING_COMPLETE:
+     return Object.assign({}, state, {
+        upcoming: {
+          birthdayWish: getPendingMessages(action.payload.birthdayWish),
+          congratulationsOnBaby: getPendingMessages(action.payload.congratulationsOnBaby)
+        }
+      });
     case PendingMessagesActions.ActionTypes.SELECT_USERS_PENDING_BIRTHDAY_WISH_MESSAGE:
       return Object.assign({}, state, {
         usersPending: {

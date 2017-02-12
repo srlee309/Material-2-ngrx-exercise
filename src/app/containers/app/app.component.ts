@@ -8,7 +8,7 @@ import * as UserLoginActions from '../../actions/user-login';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private store: Store<fromRoot.State>) { 
+  constructor(private store: Store<fromRoot.State>) {
     this.store.dispatch(new UserLoginActions.LoginAction());
   }
 }

@@ -1,5 +1,8 @@
 <md-chip-list>
-  <md-chip *ngFor='let message of messages' [selected]="message.isSelected" [disabled]="selectable" (click)="messageClick(message)" >
+  <md-chip *ngFor='let message of messages' 
+    [selected]="message.isSelected" [disabled]="!selectable" 
+    [ngClass]="{'mp-disabled': !selectable}"
+    (click)="messageClick(message)" >
     {{message.recipientName}}
   </md-chip>
 </md-chip-list>
