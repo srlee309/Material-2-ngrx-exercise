@@ -1,3 +1,27 @@
-<p>
-  processed-message-list works!
-</p>
+<md-card>
+  <md-card-header>
+    <md-card-title>Birthday Wish</md-card-title>
+    <md-card-subtitle>Processed</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <md-list>
+      <md-list-item *ngFor="let message of birthdayWishMessages$ | async">
+        {{message.recipientName}} - {{message.content}}
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-header>
+    <md-card-title>Congratulations on Baby</md-card-title>
+    <md-card-subtitle>Processed</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+      <md-list-item *ngFor="let message of congratulationsOnBabyMessages$ | async">
+        <h3 md-line> {{message.recipientName}} </h3>
+        <p md-line>
+          {{message.content}}
+        </p>
+      </md-list-item>
+  </md-card-content>
+</md-card>
