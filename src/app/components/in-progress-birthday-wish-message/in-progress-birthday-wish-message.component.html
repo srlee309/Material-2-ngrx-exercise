@@ -1,4 +1,4 @@
-<p class="mp-subtitle">Please select the gift for Steve</p>
+<p class="mp-subtitle">Please select the gift for {{message?.recipientName}}</p>
 <form>
   <md-select [(ngModel)]="selectedGift" name="gift">
     <md-option *ngFor="let gift of gifts" [value]="gift">
@@ -10,12 +10,13 @@
     <p>{{selectedGift.title}}</p>
     <p>{{selectedGift.description}}</p>
     <img md-card-image src="{{selectedGift.location}}">
-
-
-
     <p class="mp-subtitle">Message preview</p>
     <p>'Mate, Happy Birthday. To celebrate this once a year occasion we have picked the following gift: {{selectedGift.title}}
       Enjoy.'</p>
   </div>
-
 </form>
+ <div *ngIf="selectedGift" class="flex-container" fxLayout="row" fxLayoutAlign="center center">
+  <div class="flex-item">  
+    <button md-button (click)="sendMessage(message.recipientName, selectedGift)">Send</button>
+  </div>
+</div>

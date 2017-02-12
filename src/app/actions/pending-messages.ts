@@ -9,7 +9,8 @@ export const ActionTypes = {
   LOAD_UPCOMING: type('[Pending Messages]  Load Upcoming'),
   LOAD_UPCOMING_COMPLETE: type('[Pending Messages] Load Upcoming Complete'),
   SELECT_USERS_PENDING_BIRTHDAY_WISH_MESSAGE: type('[Pending Messages] Select Users Pending Birthday Wish Message'),
-  SELECT_USERS_PENDING_CONGRATULATIONS_ON_BABY_MESSAGE: type('[Pending Messages] Select Users Pending Congratulations On Baby Message')
+  SELECT_USERS_PENDING_CONGRATULATIONS_ON_BABY_MESSAGE: type('[Pending Messages] Select Users Pending Congratulations On Baby Message'),
+  DELETE_USERS_PENDING_MESSAGE: type('[Pending Messages] Delete Users Pending Message')
 };
 
 export class LoadForUserAction implements Action {
@@ -46,6 +47,12 @@ export class SelectUsersPendingCongratulationsOnBabyMessageAction implements Act
   constructor(public payload: PendingMessage) { }
 }
 
+export class DeleteUsersPendingMessageAction implements Action {
+  type = ActionTypes.DELETE_USERS_PENDING_MESSAGE;
+
+  constructor(public payload: PendingMessage) { }
+}
+
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
@@ -53,4 +60,4 @@ export class SelectUsersPendingCongratulationsOnBabyMessageAction implements Act
 export type Actions
   = LoadForUserAction | LoadForUserCompleteAction | LoadUpcomingAction 
   | LoadUpcomingCompleteAction | SelectUsersPendingBirthdayWishMessageAction 
-  | SelectUsersPendingCongratulationsOnBabyMessageAction;
+  | SelectUsersPendingCongratulationsOnBabyMessageAction | DeleteUsersPendingMessageAction;

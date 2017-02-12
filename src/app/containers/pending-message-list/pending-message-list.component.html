@@ -7,14 +7,8 @@
     <mp-pending-messages (messageSelected)="onBirthdayWishMessageSelected($event)"
       [messages]="usersPendingBirthdayWishMessages$ | async" [selectable]="true">
     </mp-pending-messages>
-    <mp-in-progress-birthday-wish-message *ngIf="selectedBirthdayWishMessage" [gifts]="gifts$ | async">
+    <mp-in-progress-birthday-wish-message *ngIf="selectedBirthdayWishMessage" [gifts]="gifts$ | async"
+      [message]="selectedBirthdayWishMessage">
     </mp-in-progress-birthday-wish-message>
-    <md-card-actions *ngIf="selectedBirthdayWishMessage">
-      <div class="flex-container" fxLayout="row" fxLayoutAlign="center center">
-        <div class="flex-item">  
-         <button md-button>Send</button>
-        </div>
-      </div>
-    </md-card-actions>
   </md-card-content>
 </md-card>

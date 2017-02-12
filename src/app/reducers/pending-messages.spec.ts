@@ -78,6 +78,16 @@ describe('PendingMessagesReducer', () => {
         });
     });
 
+    describe('DELETE_USERS_PENDING_MESSAGE', () => {
+        it('should delete message with same id as message id in payload', () => {
+            let result = PendingMessages.reducer(fromPendingMessages.initialState, loadForUserCompleteAction);
+            result = PendingMessages.reducer(result, new PendingMessagesActions.DeleteUsersPendingMessageAction(
+                expectedMessagesResult.birthdayWish[0]));
+            expect(result.usersPending.birthdayWish.length).toBe(1);
+            expect(result.usersPending.birthdayWish[0].id).toBe('2');
+        });
+    });
+
     describe('getUsersSelectedBirthdayWishMessage selector', () => {
         it('should select message that has isSelected as true', () => {
             expectedState.usersPending.birthdayWish[0].isSelected = true;

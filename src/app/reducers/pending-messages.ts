@@ -40,9 +40,16 @@ export function reducer(state = initialState, action: PendingMessagesActions.Act
     case PendingMessagesActions.ActionTypes.SELECT_USERS_PENDING_BIRTHDAY_WISH_MESSAGE:
       return Object.assign({}, state, {
         usersPending: {
-          birthdayWish: state.usersPending.birthdayWish.map((message) => {
+          birthdayWish: state.usersPending.birthdayWish.map((message: PendingMessage) => {
             return Object.assign({}, message, {'isSelected': message.id === action.payload.id});
           }),
+          congratulationsOnBaby: state.usersPending.congratulationsOnBaby
+        }
+      });
+    case PendingMessagesActions.ActionTypes.DELETE_USERS_PENDING_MESSAGE:
+      return Object.assign({}, state, {
+        usersPending: {
+          birthdayWish: state.usersPending.birthdayWish.filter((message) => message.id !== action.payload.id),
           congratulationsOnBaby: state.usersPending.congratulationsOnBaby
         }
       });
