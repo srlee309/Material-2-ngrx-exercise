@@ -2,9 +2,6 @@ import { ProcessedMessageResponse } from './processed-message-response.interface
 import {FilledBirthdayWishMessage} from './filled-birthday-wish-message.class';
 import {FilledCongratulationsOnBabyMessage} from './filled-congratulations-on-baby-message.class';
 export class ProcessedMessage implements ProcessedMessageResponse {
-  readonly recipientName: string;
-  readonly content: string;
-
   static fromBirthdayWishMessage(filledBirthdayWishMessage: FilledBirthdayWishMessage) {
     const giftTitle = filledBirthdayWishMessage.gift.title;
     // tslint:disable-next-line:max-line-length
@@ -17,8 +14,6 @@ export class ProcessedMessage implements ProcessedMessageResponse {
     return new this(filledCongratulationsOnBabyMessage.recipientName, messageContent);
   }
 
-  constructor(recipientName: string, content: string) {
-      this.recipientName = recipientName;
-      this.content = content;
+  constructor(public recipientName: string, public content: string) {
   }
 }
