@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import {PendingMessage} from '../../models/pending-message.class';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
@@ -8,7 +8,8 @@ import {FilledCongratulationsOnBabyMessage} from '../../models/filled-congratula
 @Component({
   selector: 'mp-in-progress-congratulations-on-baby-message',
   templateUrl: './in-progress-congratulations-on-baby-message.component.html',
-  styleUrls: ['./in-progress-congratulations-on-baby-message.component.scss']
+  styleUrls: ['./in-progress-congratulations-on-baby-message.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InProgressCongratulationsOnBabyMessageComponent {
   @Input() names: string[];

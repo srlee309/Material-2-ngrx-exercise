@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output} from '@angular/core';
+import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
 import {FilledBirthdayWishMessage} from '../../models/filled-birthday-wish-message.class';
 import { GiftResponse} from '../../models/gift-response.interface';
 import {ProcessedMessage} from '../../models/processed-message.class';
@@ -11,7 +11,8 @@ import * as ProcessedMessageActions from '../../actions/processed-messages';
 @Component({
   selector: 'mp-in-progress-birthday-wish-message',
   templateUrl: './in-progress-birthday-wish-message.component.html',
-  styleUrls: ['./in-progress-birthday-wish-message.component.scss']
+  styleUrls: ['./in-progress-birthday-wish-message.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InProgressBirthdayWishMessageComponent {
   @Input() gifts: GiftResponse[];
