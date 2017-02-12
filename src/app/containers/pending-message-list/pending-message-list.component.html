@@ -12,3 +12,17 @@
     </mp-in-progress-birthday-wish-message>
   </md-card-content>
 </md-card>
+<md-card>
+  <md-card-header>
+    <md-card-title>Congratulations on Baby</md-card-title>
+    <md-card-subtitle>Pending</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <mp-pending-messages (messageSelected)="onCongratulationsOnBabyMessageSelected($event)"
+      [messages]="usersPendingCongratulationsOnBabyMessages$ | async" [selectable]="true">
+    </mp-pending-messages>
+    <mp-in-progress-congratulations-on-baby-message *ngIf="selectedCongratulationsOnBabyMessage" [names]="names$ | async"
+      [message]="selectedCongratulationsOnBabyMessage">
+    </mp-in-progress-congratulations-on-baby-message>
+  </md-card-content>
+</md-card>

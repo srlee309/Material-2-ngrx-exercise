@@ -19,6 +19,10 @@ const pendingMessagesPayload: PendingMessagesResponse = {
         {
             'id': '3',
             'recipientName': 'Nellie'
+        },
+        {
+            'id': '4',
+            'recipientName': 'Steve'
         }
     ]
 };
@@ -34,6 +38,8 @@ const expectedMessagesResult = {
     'congratulationsOnBaby': [
         new PendingMessage(pendingMessagesPayload.congratulationsOnBaby[0].id,
             pendingMessagesPayload.congratulationsOnBaby[0].recipientName, false),
+        new PendingMessage(pendingMessagesPayload.congratulationsOnBaby[1].id,
+            pendingMessagesPayload.congratulationsOnBaby[1].recipientName, false)
     ]
 }
 const expectedState: PendingMessages.State = {
@@ -86,6 +92,23 @@ describe('PendingMessagesReducer', () => {
             result = PendingMessages.reducer(result, new PendingMessagesActions.SelectUsersPendingBirthdayWishMessageAction(
                 expectedMessagesResult.birthdayWish[1]));
             expect(result.usersPending.birthdayWish[0].isSelected).toBeFalsy();
+        });
+    });
+
+     describe('SELECT_USERS_PENDING_CONGRATULATIONS_ON_BABY_MESSAGE', () => {
+        it('should select message in action payload in state', () => {
+            let result = PendingMessages.reducer(PendingMessages.initialState, loadForUserCompleteAction);
+            result = PendingMessages.reducer(result, new PendingMessagesActions.SelectUsersPendingCongratulationsOnBabyMessageAction(
+                expectedMessagesResult.congratulationsOnBaby[0]));
+            expect(result.usersPending.congratulationsOnBaby[0].isSelected).toBeTruthy();
+        });
+        it('should unselect previous selected message in state when new message selected', () => {
+            let result = PendingMessages.reducer(PendingMessages.initialState, loadForUserCompleteAction);
+            result = PendingMessages.reducer(result, new PendingMessagesActions.SelectUsersPendingCongratulationsOnBabyMessageAction(
+                expectedMessagesResult.congratulationsOnBaby[0]));
+            result = PendingMessages.reducer(result, new PendingMessagesActions.SelectUsersPendingCongratulationsOnBabyMessageAction(
+                expectedMessagesResult.congratulationsOnBaby[1]));
+            expect(result.usersPending.congratulationsOnBaby[0].isSelected).toBeFalsy();
         });
     });
 

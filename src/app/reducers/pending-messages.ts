@@ -54,6 +54,15 @@ export function reducer(state = initialState, action: PendingMessagesActions.Act
           congratulationsOnBaby: state.usersPending.congratulationsOnBaby
         }
       });
+    case PendingMessagesActions.ActionTypes.SELECT_USERS_PENDING_CONGRATULATIONS_ON_BABY_MESSAGE:
+      return Object.assign({}, state, {
+        usersPending: {
+          birthdayWish: state.usersPending.birthdayWish,
+          congratulationsOnBaby: state.usersPending.congratulationsOnBaby.map((message: PendingMessage) => {
+            return Object.assign({}, message, {'isSelected': message.id === action.payload.id});
+          })
+        }
+      });
     case PendingMessagesActions.ActionTypes.DELETE_USERS_PENDING_MESSAGE:
       return Object.assign({}, state, {
         usersPending: {
@@ -75,4 +84,8 @@ export const getUpcomingCongratulationsOnBabyMessages = (state: State) => state.
 
 export const getUsersSelectedBirthdayWishMessage =
   createSelector(getUsersBirthdayWishMessages,
+    (messages: PendingMessage[]) => messages.find((message: PendingMessage) => message.isSelected));
+
+export const getUsersSelectedCongratulationsOnBabyMessage =
+  createSelector(getUsersCongratulationsOnBabyMessages,
     (messages: PendingMessage[]) => messages.find((message: PendingMessage) => message.isSelected));

@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
 import * as PendingMessageActions from '../../actions/pending-messages';
 import { Observable } from 'rxjs/Observable';
-import { PendingMessage} from '../../models/pending-message.class';
-import { GiftResponse} from '../../models/gift-response.interface';
+import { PendingMessage } from '../../models/pending-message.class';
+import { GiftResponse } from '../../models/gift-response.interface';
 import 'rxjs/add/operator/find';
 import 'rxjs/add/operator/mergeMap';
 @Component({
@@ -16,6 +16,7 @@ export class PendingMessageListComponent {
   gifts$: Observable<GiftResponse[]>;
   names$: Observable<string[]>;
   selectedBirthdayWishMessage: PendingMessage;
+  selectedCongratulationsOnBabyMessage: PendingMessage;
   usersPendingBirthdayWishMessages$: Observable<PendingMessage[]>;
   usersPendingCongratulationsOnBabyMessages$: Observable<PendingMessage[]>;
 
@@ -25,10 +26,16 @@ export class PendingMessageListComponent {
     this.usersPendingBirthdayWishMessages$ = this.store.select(fromRoot.getUsersPendingBirthdayWishMessages);
     this.usersPendingCongratulationsOnBabyMessages$ = this.store.select(fromRoot.getUsersPendingCongratulationsOnBabyMessages);
     this.store.select(fromRoot.getUsersSelectedBirthdayWishMessage)
-              .subscribe((message: PendingMessage) => this.selectedBirthdayWishMessage = message);
+      .subscribe((message: PendingMessage) => this.selectedBirthdayWishMessage = message);
+    this.store.select(fromRoot.getUsersSelectedCongratulationsOnBabyMessage)
+      .subscribe((message: PendingMessage) => this.selectedCongratulationsOnBabyMessage = message);
   }
 
   onBirthdayWishMessageSelected(message: PendingMessage) {
     this.store.dispatch(new PendingMessageActions.SelectUsersPendingBirthdayWishMessageAction(message));
+  }
+
+  onCongratulationsOnBabyMessageSelected(message: PendingMessage) {
+    this.store.dispatch(new PendingMessageActions.SelectUsersPendingCongratulationsOnBabyMessageAction(message));
   }
 }

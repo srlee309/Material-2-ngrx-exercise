@@ -50,6 +50,8 @@ export const getUpcomingCongratulationsOnBabyMessages =
     createSelector(getPendingMessagesState, fromPendingMessages.getUpcomingCongratulationsOnBabyMessages);
 export const getUsersSelectedBirthdayWishMessage =
     createSelector(getPendingMessagesState, fromPendingMessages.getUsersSelectedBirthdayWishMessage);
+export const getUsersSelectedCongratulationsOnBabyMessage =
+    createSelector(getPendingMessagesState, fromPendingMessages.getUsersSelectedCongratulationsOnBabyMessage);
 
 export const getProcessedMessagesState = (state: State) => state.processedMessages;
 export const getProcessedBirthdayWishMessages =
