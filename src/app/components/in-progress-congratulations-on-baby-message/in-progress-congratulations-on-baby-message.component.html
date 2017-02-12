@@ -1,6 +1,6 @@
 <p class="mp-subtitle">Select baby's name for {{message.recipientName}}</p>
 <form>
-  <md-select [(ngModel)]="selectedBabyName" name="babyName">
+  <md-select placeholder="Baby Name" [(ngModel)]="selectedBabyName" name="babyName">
     <md-option *ngFor="let name of names" [value]="name">
       {{name}}
     </md-option>

@@ -41,7 +41,7 @@ const expectedMessagesResult = {
         new PendingMessage(pendingMessagesPayload.congratulationsOnBaby[1].id,
             pendingMessagesPayload.congratulationsOnBaby[1].recipientName, false)
     ]
-}
+};
 const expectedState: PendingMessages.State = {
     usersPending: expectedMessagesResult,
     upcoming: expectedMessagesResult
@@ -95,7 +95,7 @@ describe('PendingMessagesReducer', () => {
         });
     });
 
-     describe('SELECT_USERS_PENDING_CONGRATULATIONS_ON_BABY_MESSAGE', () => {
+    describe('SELECT_USERS_PENDING_CONGRATULATIONS_ON_BABY_MESSAGE', () => {
         it('should select message in action payload in state', () => {
             let result = PendingMessages.reducer(PendingMessages.initialState, loadForUserCompleteAction);
             result = PendingMessages.reducer(result, new PendingMessagesActions.SelectUsersPendingCongratulationsOnBabyMessageAction(

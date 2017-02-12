@@ -11,5 +11,4 @@ export class UserLoginService {
     return this.http.get('assets/api/user.json')
         .map((res: Response) => res.json());
   }
-
 }

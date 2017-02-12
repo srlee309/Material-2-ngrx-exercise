@@ -3,7 +3,7 @@ import { NamesService } from './names.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { HttpModule } from '@angular/http';
-import { NameResponse} from '../models/name-response.interface';
+import { NameResponse } from '../models/name-response.interface';
 
 describe('NamesService', () => {
   let mockBackend: MockBackend;
@@ -12,7 +12,7 @@ describe('NamesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-      HttpModule
+        HttpModule
       ],
       providers: [
         MockBackend,
@@ -22,16 +22,16 @@ describe('NamesService', () => {
           provide: Http,
           useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
             return new Http(backendInstance, defaultOptions);
-        },
-        deps: [MockBackend, BaseRequestOptions]
+          },
+          deps: [MockBackend, BaseRequestOptions]
         }
       ]
     });
   });
   beforeEach(inject([
-      MockBackend,
-      NamesService
-    ],
+    MockBackend,
+    NamesService
+  ],
     (_mockBackend, _namesService) => {
       mockBackend = _mockBackend;
       service = _namesService;
@@ -40,21 +40,21 @@ describe('NamesService', () => {
 
   it('should return expected response', () => {
     mockBackend.connections.subscribe(
-        (connection: MockConnection) => {
+      (connection: MockConnection) => {
         connection.mockRespond(new Response(
           new ResponseOptions({
-              body: [{'name': 'Dan'},
-                    {'name': 'Paige'},
-                    {'name': 'Rhona'}]
-            }
+            body: [{ 'name': 'Dan' },
+            { 'name': 'Paige' },
+            { 'name': 'Rhona' }]
+          }
           )));
       });
 
     service.getNames()
       .subscribe(
-        (names: NameResponse[]) => {
-          expect(names.length).toBe(3);
-        }
+      (names: NameResponse[]) => {
+        expect(names.length).toBe(3);
+      }
       );
   });
 });

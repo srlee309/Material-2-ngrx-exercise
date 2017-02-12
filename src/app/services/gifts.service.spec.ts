@@ -3,7 +3,7 @@ import { GiftsService } from './gifts.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { HttpModule } from '@angular/http';
-import { GiftResponse} from '../models/gift-response.interface';
+import { GiftResponse } from '../models/gift-response.interface';
 
 describe('giftsService', () => {
   let mockBackend: MockBackend;
@@ -12,7 +12,7 @@ describe('giftsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-      HttpModule
+        HttpModule
       ],
       providers: [
         MockBackend,
@@ -22,16 +22,16 @@ describe('giftsService', () => {
           provide: Http,
           useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
             return new Http(backendInstance, defaultOptions);
-        },
-        deps: [MockBackend, BaseRequestOptions]
+          },
+          deps: [MockBackend, BaseRequestOptions]
         }
       ]
     });
   });
   beforeEach(inject([
-      MockBackend,
-      GiftsService
-    ],
+    MockBackend,
+    GiftsService
+  ],
     (_mockBackend, _giftsService) => {
       mockBackend = _mockBackend;
       service = _giftsService;
@@ -40,23 +40,24 @@ describe('giftsService', () => {
 
   it('should return expected response', () => {
     mockBackend.connections.subscribe(
-        (connection: MockConnection) => {
+      (connection: MockConnection) => {
         connection.mockRespond(new Response(
           new ResponseOptions({
-              body: [{
-                      'title': 'Owl sculpture',
-                      'description': 'Delicately carved from luminous white onyx, this elegant owl has a sodalite beak and wide glass eyes glaring out into the night. It stands 7 inches tall and is designed by a Peruvian gem artist to reflect the owl\'s radiance',
-                      'location': 'assets/images/owl-sculpture.jpg'
-                  }]
-            }
+            body: [{
+              'title': 'Owl sculpture',
+              // tslint:disable-next-line:max-line-length
+              'description': 'Delicately carved from luminous white onyx, this elegant owl has a sodalite beak and wide glass eyes glaring out into the night. It stands 7 inches tall and is designed by a Peruvian gem artist to reflect the owl\'s radiance',
+              'location': 'assets/images/owl-sculpture.jpg'
+            }]
+          }
           )));
       });
 
     service.getGifts()
       .subscribe(
-        (gifts: GiftResponse[]) => {
-          expect(gifts.length).toBe(1);
-        }
+      (gifts: GiftResponse[]) => {
+        expect(gifts.length).toBe(1);
+      }
       );
   });
 });

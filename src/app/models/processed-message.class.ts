@@ -7,6 +7,7 @@ export class ProcessedMessage implements ProcessedMessageResponse {
 
   static fromBirthdayWishMessage(filledBirthdayWishMessage: FilledBirthdayWishMessage) {
     const giftTitle = filledBirthdayWishMessage.gift.title;
+    // tslint:disable-next-line:max-line-length
     const messageContent = `Mate, Happy Birthday. To celebrate this once a year occasion we have picked the following gift: ${giftTitle}. Enjoy`;
     return new this(filledBirthdayWishMessage.recipientName, messageContent);
   }

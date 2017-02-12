@@ -21,6 +21,7 @@ export class InProgressCongratulationsOnBabyMessageComponent {
   sendMessage(recipientName: string, selectedBabyName: string, selectedBabyBirthDate: Date) {
     // in a real app we would dispatch an effect action to update the data on the server
     this.store.dispatch(new PendingMessageActions.DeleteUsersPendingMessageAction(this.message));
+    // tslint:disable-next-line:max-line-length
     const australianDate = `${this.selectedBabyBirthDate.getDay()}/${this.selectedBabyBirthDate.getMonth()}/${this.selectedBabyBirthDate.getFullYear()}`;
     this.store.dispatch(new ProcessedMessageActions.AddCongratulationsOnBabyMessageAction(
       new FilledCongratulationsOnBabyMessage(this.message.recipientName, this.selectedBabyName, australianDate)));

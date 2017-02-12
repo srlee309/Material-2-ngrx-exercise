@@ -17,9 +17,5 @@ export class LoadCompleteAction implements Action {
   constructor(public payload: NameResponse[]) { }
 }
 
-/**
- * Export a type alias of all actions in this action group
- * so that reducers can easily compose action types
- */
 export type Actions
   = LoadAction | LoadCompleteAction;

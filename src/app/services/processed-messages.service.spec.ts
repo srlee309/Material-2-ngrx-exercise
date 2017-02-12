@@ -43,6 +43,7 @@ describe('ProcessedMessagesService', () => {
                 'birthdayWish': [
                   {
                     recipientName: 'test',
+                    // tslint:disable-next-line:max-line-length
                     content: 'Mate, Happy Birthday. To celebrate this once a year occasion we have picked the following gift: Owl sculpture. Enjoy'
                   }
                 ],

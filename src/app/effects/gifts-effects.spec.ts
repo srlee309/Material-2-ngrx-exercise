@@ -13,6 +13,7 @@ import { GiftResponse} from '../models/gift-response.interface';
 
 const giftsPayload: GiftResponse[] = [{
                       'title': 'Owl sculpture',
+                      // tslint:disable-next-line:max-line-length
                       'description': 'Delicately carved from luminous white onyx, this elegant owl has a sodalite beak and wide glass eyes glaring out into the night. It stands 7 inches tall and is designed by a Peruvian gem artist to reflect the owl\'s radiance',
                       'location': 'assets/images/owl-sculpture.jpg'
                   }];

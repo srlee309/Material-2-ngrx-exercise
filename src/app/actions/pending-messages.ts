@@ -53,10 +53,6 @@ export class DeleteUsersPendingMessageAction implements Action {
   constructor(public payload: PendingMessage) { }
 }
 
-/**
- * Export a type alias of all actions in this action group
- * so that reducers can easily compose action types
- */
 export type Actions
   = LoadForUserAction | LoadForUserCompleteAction | LoadUpcomingAction
   | LoadUpcomingCompleteAction | SelectUsersPendingBirthdayWishMessageAction

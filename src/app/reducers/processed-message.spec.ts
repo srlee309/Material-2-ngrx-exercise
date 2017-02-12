@@ -3,8 +3,8 @@ import { LoadCompleteAction, AddBirthdayWishMessageAction, AddCongratulationsOnB
 import { ProcessedMessagesResponse } from '../models/processed-messages-response.interface';
 import { ProcessedMessage } from '../models/processed-message.class';
 import * as ProcessedMessagesActions from '../actions/processed-messages';
-import {FilledBirthdayWishMessage} from '../models/filled-birthday-wish-message.class';
-import {FilledCongratulationsOnBabyMessage} from '../models/filled-congratulations-on-baby-message.class';
+import { FilledBirthdayWishMessage } from '../models/filled-birthday-wish-message.class';
+import { FilledCongratulationsOnBabyMessage } from '../models/filled-congratulations-on-baby-message.class';
 import * as fromRoot from './index';
 const processedMessagesPayload: ProcessedMessagesResponse = {
     'birthdayWish': [
@@ -46,7 +46,7 @@ describe('ProcessedMessagesReducer', () => {
     });
 
     describe('LOAD_FOR_USER_COMPLETE', () => {
-         it('should load payload birthday wish messages into state birthdayWish array', () => {
+        it('should load payload birthday wish messages into state birthdayWish array', () => {
             const result = ProcessedMessages.reducer(ProcessedMessages.initialState, loadCompleteAction);
             expect(result.birthdayWish).toEqual(expectedMessagesResult.birthdayWish);
         });
@@ -55,15 +55,15 @@ describe('ProcessedMessagesReducer', () => {
             expect(result.congratulationsOnBaby).toEqual(expectedMessagesResult.congratulationsOnBaby);
         });
     });
-     describe('ADD_BIRTHDAY_WISH_MESSAGE', () => {
-         it('should add payload birthday wish message into state birthdayWish array', () => {
+    describe('ADD_BIRTHDAY_WISH_MESSAGE', () => {
+        it('should add payload birthday wish message into state birthdayWish array', () => {
             let result = ProcessedMessages.reducer(ProcessedMessages.initialState, loadCompleteAction);
             result = ProcessedMessages.reducer(result, addBirthdayWishMessageAction);
             expect(result.birthdayWish.length).toEqual(2);
         });
     });
-     describe('ADD_CONGRATULATIONS_ON_BABY_MESSAGE', () => {
-         it('should add payload congratulationsOnBaby message into state congratulationsOnBaby array', () => {
+    describe('ADD_CONGRATULATIONS_ON_BABY_MESSAGE', () => {
+        it('should add payload congratulationsOnBaby message into state congratulationsOnBaby array', () => {
             let result = ProcessedMessages.reducer(ProcessedMessages.initialState, loadCompleteAction);
             result = ProcessedMessages.reducer(result, addCongratulationsOnBabyMessageAction);
             expect(result.congratulationsOnBaby.length).toEqual(1);

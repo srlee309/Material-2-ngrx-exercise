@@ -3,7 +3,7 @@ import { UserLoginService } from './user-login.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { HttpModule } from '@angular/http';
-import { UserResponse} from '../models/user-response.interface';
+import { UserResponse } from '../models/user-response.interface';
 
 describe('UserLoginService', () => {
   let mockBackend: MockBackend;
@@ -12,7 +12,7 @@ describe('UserLoginService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-      HttpModule
+        HttpModule
       ],
       providers: [
         MockBackend,
@@ -22,36 +22,36 @@ describe('UserLoginService', () => {
           provide: Http,
           useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
             return new Http(backendInstance, defaultOptions);
-        },
-        deps: [MockBackend, BaseRequestOptions]
+          },
+          deps: [MockBackend, BaseRequestOptions]
         }
       ]
     });
   });
   beforeEach(inject([
-      MockBackend,
-      UserLoginService
-    ],
+    MockBackend,
+    UserLoginService
+  ],
     (_mockBackend, _namesService) => {
       mockBackend = _mockBackend;
       service = _namesService;
     }
   ));
-   it('should return expected response', async(() => {
+  it('should return expected response', async(() => {
     mockBackend.connections.subscribe(
-        (connection: MockConnection) => {
+      (connection: MockConnection) => {
         connection.mockRespond(new Response(
           new ResponseOptions({
-              body:  { "id": "1"}
-            }
+            body: { 'id': '1' }
+          }
           )));
       });
 
     service.login()
       .subscribe(
-        (userDetails: UserResponse) => {
-          expect(userDetails.id).toBe("1");
-        }
+      (userDetails: UserResponse) => {
+        expect(userDetails.id).toBe('1');
+      }
       );
   }));
 });

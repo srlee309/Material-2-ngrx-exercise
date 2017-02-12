@@ -3,7 +3,7 @@ import { PendingMessagesService } from './pending-messages.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { HttpModule } from '@angular/http';
-import { PendingMessagesResponse} from '../models/pending-messages-response.interface';
+import { PendingMessagesResponse } from '../models/pending-messages-response.interface';
 
 describe('PendingMessagesService', () => {
   let mockBackend: MockBackend;
@@ -12,7 +12,7 @@ describe('PendingMessagesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-      HttpModule
+        HttpModule
       ],
       providers: [
         MockBackend,
@@ -22,58 +22,58 @@ describe('PendingMessagesService', () => {
           provide: Http,
           useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
             return new Http(backendInstance, defaultOptions);
-        },
-        deps: [MockBackend, BaseRequestOptions]
+          },
+          deps: [MockBackend, BaseRequestOptions]
         }
       ]
     });
   });
   beforeEach(inject([
-      MockBackend,
-      PendingMessagesService
-    ],
+    MockBackend,
+    PendingMessagesService
+  ],
     (_mockBackend, _namesService) => {
       mockBackend = _mockBackend;
       service = _namesService;
       mockBackend.connections.subscribe(
         (connection: MockConnection) => {
-        connection.mockRespond(new Response(
-          new ResponseOptions({
-              body:  {
-                      'birthdayWish': [
-                          {
-                              'id': '1',
-                              'recipientName': 'Dan'
-                          }
-                      ],
-                      'congratulationsOnBaby': [
-                          {
-                              'id': '3',
-                              'recipientName': 'Nellie'
-                          }
-                      ]
-                    }
+          connection.mockRespond(new Response(
+            new ResponseOptions({
+              body: {
+                'birthdayWish': [
+                  {
+                    'id': '1',
+                    'recipientName': 'Dan'
+                  }
+                ],
+                'congratulationsOnBaby': [
+                  {
+                    'id': '3',
+                    'recipientName': 'Nellie'
+                  }
+                ]
+              }
             }
-          )));
-      });
+            )));
+        });
     }
   ));
-   it('should return expected response for getUsersMessages', () => {
+  it('should return expected response for getUsersMessages', () => {
     service.getUsersMessages()
       .subscribe(
-        (messages: PendingMessagesResponse) => {
-          expect(messages.birthdayWish.length).toBe(1);
-          expect(messages.congratulationsOnBaby.length).toBe(1);
-        }
+      (messages: PendingMessagesResponse) => {
+        expect(messages.birthdayWish.length).toBe(1);
+        expect(messages.congratulationsOnBaby.length).toBe(1);
+      }
       );
   });
   it('should return expected response for getUpcomingMessages', () => {
     service.getUsersMessages()
       .subscribe(
-        (messages: PendingMessagesResponse) => {
-          expect(messages.birthdayWish.length).toBe(1);
-          expect(messages.congratulationsOnBaby.length).toBe(1);
-        }
+      (messages: PendingMessagesResponse) => {
+        expect(messages.birthdayWish.length).toBe(1);
+        expect(messages.congratulationsOnBaby.length).toBe(1);
+      }
       );
   });
 });

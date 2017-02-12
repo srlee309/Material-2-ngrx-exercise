@@ -1,6 +1,6 @@
 <p class="mp-subtitle">Please select the gift for {{message?.recipientName}}</p>
 <form>
-  <md-select [(ngModel)]="selectedGift" name="gift">
+  <md-select placeholder="gift" [(ngModel)]="selectedGift" name="gift">
     <md-option *ngFor="let gift of gifts" [value]="gift">
       {{gift.title}}
     </md-option>
