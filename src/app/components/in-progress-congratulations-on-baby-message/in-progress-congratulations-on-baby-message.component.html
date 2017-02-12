@@ -1,13 +1,19 @@
-<p class="mp-subtitle">Please select the gift for Steve</p>
-  <form>
-  <md-select [(ngModel)]="selectedBabyName" name="food">
-    <md-option *ngFor="let name of babyNames" [value]="name">
+<p class="mp-subtitle">Select baby's name for {{message.recipientName}}</p>
+<form>
+  <md-select [(ngModel)]="selectedBabyName" name="babyName">
+    <md-option *ngFor="let name of names" [value]="name">
       {{name}}
     </md-option>
   </md-select>
-  <p class="mp-subtitle">Gift preview</p>
-  <p>Mate, Happy Birthday. To celebrate this once a year occasion we have picked the following gift: {{selectedBabyName}} Enjoy.</p>
-  <p class="mp-subtitle">Message preview</p>
-  <p>'Mate, Happy Birthday. To celebrate this once a year occasion we have picked the following gift: {{selectedBabyName}} Enjoy.'</p>
 </form>
+<p class="mp-subtitle">Select baby's date of birth</p>
+<material-datepicker [(date)]="selectedBabyBirthDate" dateFormat="DD-MM-YYYY"></material-datepicker>
+<p class="mp-subtitle">Message preview</p>
+<p>Whooa well done and congratulations on the birth of {{selectedBabyName}} on {{selectedBabyBirthDate | date:"dd/MM/y" }}</p>
+ <div *ngIf="selectedBabyBirthDate && selectedBabyName" class="flex-container" fxLayout="row" fxLayoutAlign="center center">
+  <div class="flex-item">  
+    <button md-button (click)="sendMessage(message.recipientName, selectedBabyName, selectedBabyBirthDate)">Send</button>
+  </div>
+</div>
+      
 

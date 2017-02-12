@@ -21,7 +21,7 @@ import { AppComponent } from './containers/app/app.component';
 import { reducer } from './reducers';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
-import { DatePickerModule } from 'ng2-datepicker';
+import { DatepickerModule } from 'angular2-material-datepicker';
 import { PendingMessageListComponent } from './containers/pending-message-list/pending-message-list.component';
 import { PendingMessagesComponent } from './components/pending-messages/pending-messages.component';
 import { InProgressBirthdayWishMessageComponent } from './components/in-progress-birthday-wish-message/in-progress-birthday-wish-message.component';
@@ -31,7 +31,7 @@ import { ProcessedMessageListComponent } from './containers/processed-message-li
 @NgModule({
   imports: [
     BrowserModule,
-    DatePickerModule,
+    DatepickerModule,
     FlexLayoutModule.forRoot(),
     FormsModule,
     HttpModule,

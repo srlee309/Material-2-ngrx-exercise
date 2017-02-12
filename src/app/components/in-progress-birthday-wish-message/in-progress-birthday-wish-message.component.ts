@@ -20,10 +20,10 @@ export class InProgressBirthdayWishMessageComponent {
 
   constructor(private store: Store<fromRoot.State>) {}
 
-  sendMessage(recipientName: string, selectedGift: GiftResponse) {
+  sendMessage() {
     // in a real app we would dispatch an effect action to update the data on the server
     this.store.dispatch(new PendingMessageActions.DeleteUsersPendingMessageAction(this.message));
     this.store.dispatch(new ProcessedMessageActions.AddBirthdayWishMessageAction(
-      new FilledBirthdayWishMessage(recipientName, selectedGift)));
+      new FilledBirthdayWishMessage(this.message.recipientName, this.selectedGift)));
   }
 }
