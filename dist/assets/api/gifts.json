@@ -1,0 +1,53 @@
+[
+    {
+        "title": "Owl sculpture",
+        "description": "Delicately carved from luminous white onyx, this elegant owl has a sodalite beak and wide glass eyes glaring out into the night. It stands 7 inches tall and is designed by a Peruvian gem artist to reflect the owl's radiance",
+        "location": "assets/images/owl-sculpture.jpg"
+    },
+    {
+        "title": "Deer sculpture",
+        "description": "Carved with surreal and elegant artistic flair, this sculpture was created by a Thai visionary who is inspired by the natural world. It's an expressive addition to a discerning household's decor",
+        "location": "assets/images/deer-sculpture.jpg"
+    },
+    {
+        "title": "Two vases",
+        "description": "Two Dozen Pink and Red Paper Roses in Yin-Yang Vases",
+        "location": "assets/images/two-vases.jpg"
+    },
+    {
+        "title": "Frog sculpture",
+        "description": "Recycled Metal Tea Frog Garden Sculpture",
+        "location": "assets/images/frog-sculpture.jpg"
+    },
+    {
+        "title": "Bracelet",
+        "description": "Crafted in a smooth sterling silver-plated setting, this bracelet has to be the ultimate wrist bling for any fashionista. It’s ideal to wear casually, to the office or for formal events and will add charm to all your daily activities.",
+        "location": "assets/images/bracelet.jpg"
+    },
+    {
+        "title": "Sports mug",
+        "description": "An awesome gift for the guys, our Engraved 25 ounce glass Sports Mug is guaranteed to impress - the perfect gift for Father's Day, a retirement, birthday or even a thank you gift.",
+        "location": "assets/images/sports-mug.jpg"
+    },
+    {
+        "title": "Shot glass",
+        "description": "A thoughtful and practical gift, perfect for Father’s Day, birthdays, or as a thank you to your groomsmen.",
+        "location": "assets/images/shot-glass.jpg"
+    },
+    {
+        "title": "Jigsaw puzzle",
+        "description": " This jigsaw puzzle will make a brilliant gift, whatever the occasion. It's sure to keep them amused.",
+        "location": "assets/images/jigsaw puzzle.jpg"
+    },
+    {
+        "title": "Baseball",
+        "description": "If you know a real MLB enthusiast, you've just stumbled across their ultimate gift! The leather baseball is official size, the acrylic display case measures 3 1/4 inches X 3 1/4 inches.",
+        "location": "assets/images/baseball.jpg"
+    },
+    {
+        "title": "Framed print",
+        "description": "Prints are created from high quality art paper on a variety of blue, grey and green backgrounds with three framing options of mahogany, white or beech. Our prints size is 18.5 inches x 14 inches.",
+        "location": "assets/images/framed-print.jpg"
+    }
+    
+]
