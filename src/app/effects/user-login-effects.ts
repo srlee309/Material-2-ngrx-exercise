@@ -5,10 +5,11 @@ import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
 import { UserLoginService } from '../services/user-login.service';
 import {UserResponse} from '../models/user-response.interface';
-import * as userLogin from '../actions/user-login';
-import * as names from '../actions/names';
-import * as gifts from '../actions/gifts';
-import * as pendingMessages from '../actions/pending-messages';
+import * as UserLoginActions from '../actions/user-login';
+import * as NamesActions from '../actions/names';
+import * as GiftsActions from '../actions/gifts';
+import * as PendingMessagesActions from '../actions/pending-messages';
+import * as ProcessedMessagesActions from '../actions/processed-messages';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
@@ -19,14 +20,15 @@ import { from } from 'rxjs/observable/from';
 @Injectable()
 export class UserLoginEffects {
   @Effect() login$: Observable<Action> = this.actions$
-      .ofType(userLogin.ActionTypes.LOGIN)
+      .ofType(UserLoginActions.ActionTypes.LOGIN)
       .switchMap(() => {
         return this.userLoginService.login()
           .mergeMap((loggedInUser: UserResponse) => from([
-              new gifts.LoadAction(),
-              new names.LoadAction(),
-              new pendingMessages.LoadForUserAction(),
-              new pendingMessages.LoadUpcomingAction()
+              new GiftsActions.LoadAction(),
+              new NamesActions.LoadAction(),
+              new PendingMessagesActions.LoadForUserAction(),
+              new PendingMessagesActions.LoadUpcomingAction(),
+              new ProcessedMessagesActions.LoadAction()
           ]));
           // in a real app a catch block would be here for error handling
          // .catch(error => of(new error.UserLoginErrorAction(error)));

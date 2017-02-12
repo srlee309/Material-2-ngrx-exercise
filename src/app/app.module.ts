@@ -13,6 +13,8 @@ import { NamesEffects } from './effects/names-effects';
 import {NamesService} from './services/names.service';
 import { PendingMessagesEffects } from './effects/pending-messages-effects';
 import {PendingMessagesService} from './services/pending-messages.service';
+import { ProcessedMessagesEffects } from './effects/processed-messages-effects';
+import {ProcessedMessagesService} from './services/processed-messages.service';
 import { UserLoginEffects } from './effects/user-login-effects';
 import { UserLoginService } from './services/user-login.service';
 import { AppComponent } from './containers/app/app.component';
@@ -25,6 +27,7 @@ import { PendingMessagesComponent } from './components/pending-messages/pending-
 import { InProgressBirthdayWishMessageComponent } from './components/in-progress-birthday-wish-message/in-progress-birthday-wish-message.component';
 import { InProgressCongratulationsOnBabyMessageComponent } from './components/in-progress-congratulations-on-baby-message/in-progress-congratulations-on-baby-message.component';
 import { UpcomingMessageListComponent } from './containers/upcoming-message-list/upcoming-message-list.component';
+import { ProcessedMessageListComponent } from './containers/processed-message-list/processed-message-list.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { UpcomingMessageListComponent } from './containers/upcoming-message-list
     EffectsModule.run(GiftsEffects),
     EffectsModule.run(NamesEffects),
     EffectsModule.run(PendingMessagesEffects),
+    EffectsModule.run(ProcessedMessagesEffects),
     EffectsModule.run(UserLoginEffects)
   ],
   declarations: [
@@ -46,9 +50,10 @@ import { UpcomingMessageListComponent } from './containers/upcoming-message-list
     PendingMessagesComponent,
     InProgressBirthdayWishMessageComponent,
     InProgressCongratulationsOnBabyMessageComponent,
-    UpcomingMessageListComponent
+    UpcomingMessageListComponent,
+    ProcessedMessageListComponent
   ],
-  providers: [GiftsService, NamesService, PendingMessagesService, UserLoginService],
+  providers: [GiftsService, NamesService, PendingMessagesService, ProcessedMessagesService, UserLoginService],
   bootstrap: [
     AppComponent
   ]

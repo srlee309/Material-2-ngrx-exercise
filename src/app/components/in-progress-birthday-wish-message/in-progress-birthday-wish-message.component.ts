@@ -1,11 +1,12 @@
 import { Component, Input, EventEmitter, Output} from '@angular/core';
-import {ProcessedBirthdayWishMessage} from '../../models/processed-birthday-wish-message';
+import {FilledBirthdayWishMessage} from '../../models/filled-birthday-wish-message.class';
 import { GiftResponse} from '../../models/gift-response.interface';
 import {ProcessedMessage} from '../../models/processed-message.class';
 import {PendingMessage} from '../../models/pending-message.class';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
 import * as PendingMessageActions from '../../actions/pending-messages';
+
 @Component({
   selector: 'mp-in-progress-birthday-wish-message',
   templateUrl: './in-progress-birthday-wish-message.component.html',

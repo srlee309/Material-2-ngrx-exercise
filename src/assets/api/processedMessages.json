@@ -1,26 +1,10 @@
 {
     "birthdayWish": [
-        { 
-            "id": "1",
-            "recipientName":"Dan"
-        },
-        { 
-            "id": "2",
-            "recipientName":"Paige"
+        {
+            "recipientName": "test",
+            "content": "Mate, Happy Birthday. To celebrate this once a year occasion we have picked the following gift: Owl sculpture. Enjoy"
         }
     ],
     "congratulationsOnBaby": [
-        { 
-            "id": "3",
-            "recipientName":"Nellie"
-        },
-        { 
-            "id": "4",
-            "recipientName":"Bettina"
-        },
-        { 
-            "id": "5",
-            "recipientName":"Cherie"
-        }
     ]
 }

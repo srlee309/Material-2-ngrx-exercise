@@ -3,26 +3,26 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { UpcomingMessageListComponent } from './upcoming-message-list.component';
+import { ProcessedMessageListComponent } from './processed-message-list.component';
 
-describe('UpcomingMessageListComponent', () => {
-  let component: UpcomingMessageListComponent;
-  let fixture: ComponentFixture<UpcomingMessageListComponent>;
+describe('ProcessedMessageListComponent', () => {
+  let component: ProcessedMessageListComponent;
+  let fixture: ComponentFixture<ProcessedMessageListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpcomingMessageListComponent ]
+      declarations: [ ProcessedMessageListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpcomingMessageListComponent);
+    fixture = TestBed.createComponent(ProcessedMessageListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  /*it('should create', () => {
+ /* it('should create', () => {
     expect(component).toBeTruthy();
   });*/
 });

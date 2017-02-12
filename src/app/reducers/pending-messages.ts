@@ -1,5 +1,6 @@
 import * as PendingMessagesActions from '../actions/pending-messages';
 import { PendingMessage } from '../models/pending-message.class';
+import { PendingMessageResponse } from '../models/pending-message-response.interface';
 import { createSelector } from 'reselect';
 
 
@@ -24,8 +25,8 @@ export const initialState: State = {
     congratulationsOnBaby: []
   }
 };
-function getPendingMessages(messagesPayload) {
-  return messagesPayload.map((message) => new PendingMessage(message.id, message.recipientName, false));
+function getAsUnselectedPendingMessageObjects(messagesPayload: PendingMessageResponse[]) {
+  return messagesPayload.map((message: PendingMessageResponse) => new PendingMessage(message.id, message.recipientName, false));
 }
 
 export function reducer(state = initialState, action: PendingMessagesActions.Actions): State {
@@ -33,15 +34,15 @@ export function reducer(state = initialState, action: PendingMessagesActions.Act
     case PendingMessagesActions.ActionTypes.LOAD_FOR_USER_COMPLETE:
      return Object.assign({}, state, {
         usersPending: {
-          birthdayWish: getPendingMessages(action.payload.birthdayWish),
-          congratulationsOnBaby: getPendingMessages(action.payload.congratulationsOnBaby)
+          birthdayWish: getAsUnselectedPendingMessageObjects(action.payload.birthdayWish),
+          congratulationsOnBaby: getAsUnselectedPendingMessageObjects(action.payload.congratulationsOnBaby)
         }
       });
   case PendingMessagesActions.ActionTypes.LOAD_UPCOMING_COMPLETE:
      return Object.assign({}, state, {
         upcoming: {
-          birthdayWish: getPendingMessages(action.payload.birthdayWish),
-          congratulationsOnBaby: getPendingMessages(action.payload.congratulationsOnBaby)
+          birthdayWish: getAsUnselectedPendingMessageObjects(action.payload.birthdayWish),
+          congratulationsOnBaby: getAsUnselectedPendingMessageObjects(action.payload.congratulationsOnBaby)
         }
       });
     case PendingMessagesActions.ActionTypes.SELECT_USERS_PENDING_BIRTHDAY_WISH_MESSAGE:
@@ -66,12 +67,12 @@ export function reducer(state = initialState, action: PendingMessagesActions.Act
   }
 }
 
-export const getUsersPendingBirthdayWishMessages = (state: State) => state.usersPending.birthdayWish;
-export const getUsersPendingCongratulationsOnBabyMessages = (state: State) => state.usersPending.congratulationsOnBaby;
+export const getUsersBirthdayWishMessages = (state: State) => state.usersPending.birthdayWish;
+export const getUsersCongratulationsOnBabyMessages = (state: State) => state.usersPending.congratulationsOnBaby;
 
 export const getUpcomingBirthdayWishMessages = (state: State) => state.upcoming.birthdayWish;
 export const getUpcomingCongratulationsOnBabyMessages = (state: State) => state.upcoming.congratulationsOnBaby;
 
 export const getUsersSelectedBirthdayWishMessage =
-  createSelector(getUsersPendingBirthdayWishMessages,
+  createSelector(getUsersBirthdayWishMessages,
     (messages: PendingMessage[]) => messages.find((message: PendingMessage) => message.isSelected));
