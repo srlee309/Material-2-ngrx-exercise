@@ -8,7 +8,7 @@
       [messages]="usersPendingBirthdayWishMessages$ | async" [selectable]="true">
     </mp-pending-messages>
     <mp-in-progress-birthday-wish-message *ngIf="selectedBirthdayWishMessage" [gifts]="gifts$ | async"
-      [message]="selectedBirthdayWishMessage">
+      [message]="selectedBirthdayWishMessage" (sendMessage)="onBirthdayWishMessageSend($event)">
     </mp-in-progress-birthday-wish-message>
   </md-card-content>
 </md-card>
@@ -22,7 +22,7 @@
       [messages]="usersPendingCongratulationsOnBabyMessages$ | async" [selectable]="true">
     </mp-pending-messages>
     <mp-in-progress-congratulations-on-baby-message *ngIf="selectedCongratulationsOnBabyMessage" [names]="names$ | async"
-      [message]="selectedCongratulationsOnBabyMessage">
+      [message]="selectedCongratulationsOnBabyMessage" (sendMessage)="onCongratulationsOnBabyMessageSend($event)">
     </mp-in-progress-congratulations-on-baby-message>
   </md-card-content>
 </md-card>

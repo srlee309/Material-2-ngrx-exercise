@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
 import * as PendingMessageActions from '../../actions/pending-messages';
 import * as ProcessedMessageActions from '../../actions/processed-messages';
-
+import {ProcessBirthdayWishMessageRequest} from '../../models/process-birthday-wish-message-request.class';
 @Component({
   selector: 'mp-in-progress-birthday-wish-message',
   templateUrl: './in-progress-birthday-wish-message.component.html',
@@ -17,14 +17,12 @@ import * as ProcessedMessageActions from '../../actions/processed-messages';
 export class InProgressBirthdayWishMessageComponent {
   @Input() gifts: GiftResponse[];
   @Input() message: PendingMessage;
+  @Output() sendMessage = new EventEmitter<ProcessBirthdayWishMessageRequest>();
   selectedGift: GiftResponse;
 
   constructor(private store: Store<fromRoot.State>) {}
 
-  sendMessage() {
-    // in a real app we would dispatch an effect action to update the data on the server
-    this.store.dispatch(new PendingMessageActions.DeleteUsersPendingMessageAction(this.message));
-    this.store.dispatch(new ProcessedMessageActions.AddBirthdayWishMessageAction(
-      new FilledBirthdayWishMessage(this.message.recipientName, this.selectedGift)));
+  sendMessageClick() {
+    this.sendMessage.emit(new ProcessBirthdayWishMessageRequest(this.message, this.selectedGift));
   }
 }

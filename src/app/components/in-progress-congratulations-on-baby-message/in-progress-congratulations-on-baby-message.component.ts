@@ -1,10 +1,9 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter} from '@angular/core';
 import {PendingMessage} from '../../models/pending-message.class';
+import {ProcessCongratulationsOnBabyMessageRequest} from '../../models/process-congratulations-on-baby-request.class';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
-import * as PendingMessageActions from '../../actions/pending-messages';
-import * as ProcessedMessageActions from '../../actions/processed-messages';
-import {FilledCongratulationsOnBabyMessage} from '../../models/filled-congratulations-on-baby-message.class';
+
 @Component({
   selector: 'mp-in-progress-congratulations-on-baby-message',
   templateUrl: './in-progress-congratulations-on-baby-message.component.html',
@@ -14,17 +13,13 @@ import {FilledCongratulationsOnBabyMessage} from '../../models/filled-congratula
 export class InProgressCongratulationsOnBabyMessageComponent {
   @Input() names: string[];
   @Input() message: PendingMessage;
+  @Output() sendMessage = new EventEmitter<ProcessCongratulationsOnBabyMessageRequest>();
   selectedBabyBirthDate: Date;
   selectedBabyName: string;
 
   constructor(private store: Store<fromRoot.State>) {}
 
-  sendMessage(recipientName: string, selectedBabyName: string, selectedBabyBirthDate: Date) {
-    // in a real app we would dispatch an effect action to update the data on the server
-    this.store.dispatch(new PendingMessageActions.DeleteUsersPendingMessageAction(this.message));
-    // tslint:disable-next-line:max-line-length
-    const australianDate = `${this.selectedBabyBirthDate.getDay()}/${this.selectedBabyBirthDate.getMonth()}/${this.selectedBabyBirthDate.getFullYear()}`;
-    this.store.dispatch(new ProcessedMessageActions.AddCongratulationsOnBabyMessageAction(
-      new FilledCongratulationsOnBabyMessage(this.message.recipientName, this.selectedBabyName, australianDate)));
+  sendMessageClick() {
+    this.sendMessage.emit(new ProcessCongratulationsOnBabyMessageRequest(this.message, this.selectedBabyName, this.selectedBabyBirthDate));
   }
 }

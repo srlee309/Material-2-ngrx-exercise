@@ -12,7 +12,7 @@
 <p>Whooa well done and congratulations on the birth of {{selectedBabyName}} on {{selectedBabyBirthDate | date:"dd/MM/y" }}</p>
  <div *ngIf="selectedBabyBirthDate && selectedBabyName" class="flex-container" fxLayout="row" fxLayoutAlign="center center">
   <div class="flex-item">  
-    <button md-button (click)="sendMessage(message.recipientName, selectedBabyName, selectedBabyBirthDate)">Send</button>
+    <button md-button (click)="sendMessageClick()">Send</button>
   </div>
 </div>
       
