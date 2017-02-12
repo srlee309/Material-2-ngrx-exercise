@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
 import * as PendingMessageActions from '../../actions/pending-messages';
@@ -12,22 +12,24 @@ import 'rxjs/add/operator/mergeMap';
   templateUrl: './pending-message-list.component.html',
   styleUrls: ['./pending-message-list.component.scss']
 })
-export class PendingMessageListComponent {
+export class PendingMessageListComponent implements OnDestroy {
   gifts$: Observable<GiftResponse[]>;
   names$: Observable<string[]>;
   selectedBirthdayWishMessage: PendingMessage;
   selectedCongratulationsOnBabyMessage: PendingMessage;
   usersPendingBirthdayWishMessages$: Observable<PendingMessage[]>;
   usersPendingCongratulationsOnBabyMessages$: Observable<PendingMessage[]>;
+  private getUsersSelectedBirthdayWishMessageSubscription;
+  private getUsersSelectedCongratulationsOnBabyMessageSubscription;
 
   constructor(private store: Store<fromRoot.State>) {
     this.gifts$ = this.store.select(fromRoot.getGifts);
     this.names$ = this.store.select(fromRoot.getNames);
     this.usersPendingBirthdayWishMessages$ = this.store.select(fromRoot.getUsersPendingBirthdayWishMessages);
     this.usersPendingCongratulationsOnBabyMessages$ = this.store.select(fromRoot.getUsersPendingCongratulationsOnBabyMessages);
-    this.store.select(fromRoot.getUsersSelectedBirthdayWishMessage)
+    this.getUsersSelectedBirthdayWishMessageSubscription = this.store.select(fromRoot.getUsersSelectedBirthdayWishMessage)
       .subscribe((message: PendingMessage) => this.selectedBirthdayWishMessage = message);
-    this.store.select(fromRoot.getUsersSelectedCongratulationsOnBabyMessage)
+    this.getUsersSelectedCongratulationsOnBabyMessageSubscription = this.store.select(fromRoot.getUsersSelectedCongratulationsOnBabyMessage)
       .subscribe((message: PendingMessage) => this.selectedCongratulationsOnBabyMessage = message);
   }
 
@@ -37,5 +39,10 @@ export class PendingMessageListComponent {
 
   onCongratulationsOnBabyMessageSelected(message: PendingMessage) {
     this.store.dispatch(new PendingMessageActions.SelectUsersPendingCongratulationsOnBabyMessageAction(message));
+  }
+
+  ngOnDestroy(){
+      this.getUsersSelectedBirthdayWishMessageSubscription.unsubscribe();
+      this.getUsersSelectedCongratulationsOnBabyMessageSubscription.unsubscribe();
   }
 }
