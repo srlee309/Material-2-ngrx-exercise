@@ -1,9 +1,10 @@
 import * as ProcessedMessages from './processed-messages';
-import { LoadCompleteAction, AddBirthdayWishMessageAction } from '../actions/processed-messages';
+import { LoadCompleteAction, AddBirthdayWishMessageAction, AddCongratulationsOnBabyMessageAction } from '../actions/processed-messages';
 import { ProcessedMessagesResponse } from '../models/processed-messages-response.interface';
 import { ProcessedMessage } from '../models/processed-message.class';
 import * as ProcessedMessagesActions from '../actions/processed-messages';
 import {FilledBirthdayWishMessage} from '../models/filled-birthday-wish-message.class';
+import {FilledCongratulationsOnBabyMessage} from '../models/filled-congratulations-on-baby-message.class';
 import * as fromRoot from './index';
 const processedMessagesPayload: ProcessedMessagesResponse = {
     'birthdayWish': [
@@ -20,9 +21,11 @@ const gift = {
     'description': 'test',
     'location': 'assets/images/owl-sculpture.jpg'
 };
-const  birthdayWishMessage = new FilledBirthdayWishMessage('test', gift);
+const birthdayWishMessage = new FilledBirthdayWishMessage('test', gift);
+const congratulationsOnBabyMessage = new FilledCongratulationsOnBabyMessage('test', 'test', '12/12/2016');
 const loadCompleteAction = new LoadCompleteAction(processedMessagesPayload);
 const addBirthdayWishMessageAction = new AddBirthdayWishMessageAction(birthdayWishMessage);
+const addCongratulationsOnBabyMessageAction = new AddCongratulationsOnBabyMessageAction(congratulationsOnBabyMessage);
 
 const expectedMessagesResult = {
     'birthdayWish': [
@@ -57,6 +60,13 @@ describe('ProcessedMessagesReducer', () => {
             let result = ProcessedMessages.reducer(ProcessedMessages.initialState, loadCompleteAction);
             result = ProcessedMessages.reducer(result, addBirthdayWishMessageAction);
             expect(result.birthdayWish.length).toEqual(2);
+        });
+    });
+     describe('ADD_CONGRATULATIONS_ON_BABY_MESSAGE', () => {
+         it('should add payload congratulationsOnBaby message into state congratulationsOnBaby array', () => {
+            let result = ProcessedMessages.reducer(ProcessedMessages.initialState, loadCompleteAction);
+            result = ProcessedMessages.reducer(result, addCongratulationsOnBabyMessageAction);
+            expect(result.congratulationsOnBaby.length).toEqual(1);
         });
     });
 });

@@ -16,10 +16,16 @@ body {
      opacity: 0.4;
      cursor: not-allowed;
 }
+
+// ADDED MATERIAL 2 STYLINGS
 md-chip:focus {
   outline:0;
 }
 
 md-chip {
   cursor:pointer;
+}
+
+md-list-item {
+  margin-bottom:24px;
 }

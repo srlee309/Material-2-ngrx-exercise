@@ -67,7 +67,7 @@ export function reducer(state = initialState, action: PendingMessagesActions.Act
       return Object.assign({}, state, {
         usersPending: {
           birthdayWish: state.usersPending.birthdayWish.filter((message) => message.id !== action.payload.id),
-          congratulationsOnBaby: state.usersPending.congratulationsOnBaby
+          congratulationsOnBaby: state.usersPending.congratulationsOnBaby.filter((message) => message.id !== action.payload.id)
         }
       });
     default: {

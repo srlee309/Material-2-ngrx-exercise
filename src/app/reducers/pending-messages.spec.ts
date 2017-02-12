@@ -129,4 +129,11 @@ describe('PendingMessagesReducer', () => {
             expect(result).toEqual(expectedState.usersPending.birthdayWish[0]);
         });
     });
+    describe('getUsersSelectedCongratulationsOnBabyMessage selector', () => {
+        it('should select message that has isSelected as true', () => {
+            expectedState.usersPending.congratulationsOnBaby[0].isSelected = true;
+            const result = PendingMessages.getUsersSelectedCongratulationsOnBabyMessage(expectedState);
+            expect(result).toEqual(expectedState.usersPending.congratulationsOnBaby[0]);
+        });
+    });
 });
