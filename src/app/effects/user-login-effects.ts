@@ -25,6 +25,7 @@ export class UserLoginEffects {
         return this.userLoginService.login()
           .mergeMap((loggedInUser: UserResponse) => from([
               new GiftsActions.LoadAction(),
+              new GiftsActions.LoadSpecialsAction(),
               new NamesActions.LoadAction(),
               new PendingMessagesActions.LoadForUserAction(),
               new PendingMessagesActions.LoadUpcomingAction(),

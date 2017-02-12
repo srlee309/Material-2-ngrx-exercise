@@ -10,9 +10,10 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: GiftsActions.Actions): State {
   switch (action.type) {
+    case GiftsActions.ActionTypes.LOAD_SPECIALS_COMPLETE:
     case GiftsActions.ActionTypes.LOAD_COMPLETE:
       return {
-        gifts: [...action.payload]
+        gifts: [...state.gifts, ...action.payload]
       };
     default: {
       return state;

@@ -11,4 +11,9 @@ export class GiftsService {
         .map((res: Response) => res.json());
   }
 
+  getSpecials(): Observable<GiftResponse[]> {
+    return this.http.get('assets/api/specials.json')
+        .map((res: Response) => res.json());
+  }
+
 }
