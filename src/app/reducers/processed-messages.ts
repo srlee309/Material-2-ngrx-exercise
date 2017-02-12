@@ -24,7 +24,11 @@ export function reducer(state = initialState, action: ProcessedMessagesActions.A
                 birthdayWish: getAsProcessedMessageObjects(action.payload.birthdayWish),
                 congratulationsOnBaby: action.payload.congratulationsOnBaby
             };
-        //case ProcessedMessagesActions.ActionTypes.ADD_BIRTHDAY_WISH_MESSAGE:
+        case ProcessedMessagesActions.ActionTypes.ADD_BIRTHDAY_WISH_MESSAGE:
+            return Object.assign({}, state, {
+                birthdayWish: [...state.birthdayWish, ProcessedMessage.fromBirthdayWishMessage(action.payload)],
+                congratulationsOnBaby: state.congratulationsOnBaby
+            });
         //case ProcessedMessagesActions.ActionTypes.ADD_CONGRATULATION_ON_BABY_MESSAGE:
         default: {
             return state;

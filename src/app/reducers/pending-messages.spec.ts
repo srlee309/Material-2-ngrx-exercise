@@ -53,11 +53,11 @@ describe('PendingMessagesReducer', () => {
     describe('LOAD_FOR_USER_COMPLETE', () => {
         it('should load payload congratulations on baby messages into state congratulationsOnBaby array', () => {
             const result = PendingMessages.reducer(PendingMessages.initialState, loadForUserCompleteAction);
-            expect(result.usersPending.birthdayWish).toEqual(expectedMessagesResult.birthdayWish);
+            expect(result.usersPending.congratulationsOnBaby).toEqual(expectedMessagesResult.congratulationsOnBaby);
         });
         it('should load payload birthday wish messages into state birthdayWish array', () => {
             const result = PendingMessages.reducer(PendingMessages.initialState, loadForUserCompleteAction);
-            expect(result.usersPending.congratulationsOnBaby).toEqual(expectedMessagesResult.congratulationsOnBaby);
+            expect(result.usersPending.birthdayWish).toEqual(expectedMessagesResult.birthdayWish);
         });
     });
 
