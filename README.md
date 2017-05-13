@@ -1,4 +1,8 @@
-# MessageProcessor
+# Description
+
+Personal project to learn about ngrx and material 2
+
+## MessageProcessor
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.30.
 
